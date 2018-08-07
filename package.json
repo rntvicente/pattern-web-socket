@@ -1,0 +1,33 @@
+{
+  "name": "example-web-socket",
+  "version": "0.0.1",
+  "description": "Example using websoket by multiple chat room",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.11.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rntvicente/example-web-socket.git"
+  },
+  "keywords": [
+    "socket.io",
+    "websocket",
+    "chat"
+  ],
+  "author": "Renato Vicente",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rntvicente/example-web-socket/issues"
+  },
+  "homepage": "https://github.com/rntvicente/example-web-socket#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
