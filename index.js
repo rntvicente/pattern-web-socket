@@ -1,11 +1,14 @@
-const app = require('./config');
+const chalk = require('chalk');
 
-const server = app.listen(80, (err) => {
+const app = require('./app');
+const config = require('./app/commons/config');
+
+const server = app.listen(config.get('PORT'), (err) => {
   if (err) {
-    console.error(`Error on listen port ${err.message}`);
+    console.error(chalk.red(`Error on listen port ${err.message}`));
   }
 
-  console.log(`Server starting at ${server.address().address}:${server.address().port}.`);
+  console.log(chalk.green(`Server starting at port:${server.address().port}.`));
 });
 
 module.exports = server;
