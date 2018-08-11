@@ -1,3 +1,10 @@
+const app = require('../server');
+
+const message = apelido => {
+  apelido;
+  message = 'Acabou de entrar.';
+};
+
 const initialChat = (req, res) => {
   const { body } = req;
 
@@ -7,18 +14,16 @@ const initialChat = (req, res) => {
   const hasErrors = req.validationErrors();
 
   if (hasErrors) {
-    res.render('index', { validation: hasErrors});
+    res.render('index', { validation: hasErrors });
     return;
   }
 
+  console.log(JSON.stringify(app, null, 2));
+  // app
+  //   .get('io')
+  //   .emit('messageToCustumer', message(body.apelido));
+
   res.render('chat');
 };
 
-const getChat = (req, res) => {
-  res.render('chat');
-};
-
-module.exports = {
-  initialChat,
-  getChat
-};
+module.exports = { initialChat };

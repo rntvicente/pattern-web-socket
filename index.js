@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const socketio = require('socket.io');
 
-const app = require('./app');
+const app = require('./app/server');
 const config = require('./app/commons/config');
 
 const server = app.listen(config.get('PORT'), (err) => {
@@ -14,12 +14,12 @@ const server = app.listen(config.get('PORT'), (err) => {
 
 const io = socketio().listen(server);
 
+app.set('io', io);
+
 io.on('connection', (socket) => {
   console.log(chalk.blue('user conect'));
-
+  
   socket.on('disconnect', () => {
-    console.log(chalk.blue('user disconect'))
+    console.log(chalk.yellow('user disconect'))
   });
 });
-
-module.exports = server;
