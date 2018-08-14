@@ -1,7 +1,7 @@
 {
   "name": "example-web-socket",
   "version": "0.0.1",
-  "description": "Example using websoket by multiple chat room",
+  "description": "Example using websocket by multiple chat room",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,9 @@
   "keywords": [
     "socket.io",
     "websocket",
-    "chat"
+    "chat",
+    "nodejs",
+    "ejs"
   ],
   "author": "Renato Vicente",
   "license": "ISC",
@@ -27,7 +29,12 @@
   "homepage": "https://github.com/rntvicente/example-web-socket#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "consign": "^0.1.6",
     "ejs": "^2.6.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "express-validator": "^5.3.0",
+    "nconf": "^0.10.0",
+    "socket.io": "^2.1.1"
   }
 }
