@@ -18,7 +18,7 @@ const initialChat = (application, req, res) => {
       message: 'Acabou de entrar.'
     });
 
-  res.render('chat');
+  res.render('chat', { body: body });
 };
 
 module.exports = { initialChat };

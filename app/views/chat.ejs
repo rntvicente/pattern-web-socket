@@ -101,6 +101,7 @@
 			<div class="panel-body campo-mensagem">
 				<div class="col-md-12">
 					<div class="input-group">
+						<input type="hidden" name="apelido" id="apelido" value="<%=body.apelido%>" >
 						<input type="text" class="form-control" placeholder="Mensagem" id="message">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button" id="send-message">></button>
@@ -119,9 +120,9 @@
 	<script>
 		let socket = io('http://localhost:3000');
 
-		document.getElementById('send-message').click(() => {
+		document.getElementById('send-message').addEventListener('click', () => {
 			socket.emit('message-to-server', {
-				apelido: '',
+				apelido: document.getElementById('apelido').value,
 				message: document.getElementById('message').value
 			});
 		});
