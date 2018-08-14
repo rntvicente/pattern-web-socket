@@ -1,7 +1,7 @@
-const { login } = require('./login');
+const { get } = require('./login');
 const { initialChat } = require('./chat');
 
 module.exports = {
-  login,
+  get,
   initialChat
 };

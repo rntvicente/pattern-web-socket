@@ -1,11 +1,4 @@
-const app = require('../server');
-
-const message = apelido => {
-  apelido;
-  message = 'Acabou de entrar.';
-};
-
-const initialChat = (req, res) => {
+const initialChat = (application, req, res) => {
   const { body } = req;
 
   req.assert('apelido', 'Campo Obrigatório').notEmpty();
@@ -18,10 +11,12 @@ const initialChat = (req, res) => {
     return;
   }
 
-  console.log(JSON.stringify(app, null, 2));
-  // app
-  //   .get('io')
-  //   .emit('messageToCustumer', message(body.apelido));
+  application
+    .get('io')
+    .emit('messageToCustumer', {
+      apelido: body.apelido,
+      message: 'Acabou de entrar.'
+    });
 
   res.render('chat');
 };

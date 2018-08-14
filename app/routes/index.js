@@ -1,11 +1,15 @@
-const express = require('express');
+const router = (application) => {
+  application.get('/', (req, res) => {
+    application.app.controllers.index.get(req, res);
+  });
 
-const controller = require('../controllers');
+  application.get('/chat', (req, res) => {
+    application.app.controllers.index.initialChat(application, req, res);
+  });
 
-const router = express.Router();
+  application.post('/chat', (req, res) => {
+    application.app.controllers.index.initialChat(application, req, res);
+  });
+};
 
-router.get('/', controller.login);
-router.get('/chat', controller.initialChat);
-router.post('/chat', controller.initialChat);
-
-module.exports = router;
+module.exports = router

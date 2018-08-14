@@ -1,5 +1,5 @@
-const login = (req, res) => {
+const get = (req, res) => {
   res.render('index', { validation: {} });
 };
 
-module.exports = { login };
+module.exports = { get };
