@@ -13,7 +13,7 @@ const initialChat = (application, req, res) => {
 
   application
     .get('io')
-    .emit('messageToCustumer', {
+    .emit('message-to-custumer', {
       apelido: body.apelido,
       message: 'Acabou de entrar.'
     });

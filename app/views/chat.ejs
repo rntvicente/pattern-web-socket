@@ -99,16 +99,14 @@
 	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
 		<div class="container">
 			<div class="panel-body campo-mensagem">
-				<form>
-					<div class="col-md-12">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Mensagem">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">></button>
-							</span>
-						</div>
+				<div class="col-md-12">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Mensagem" id="message">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="send-message">></button>
+						</span>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -119,9 +117,16 @@
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
-		let socket = io('http://localhost:3000')
+		let socket = io('http://localhost:3000');
 
-		socket.on('messageToCustumer', (data) => {
+		document.getElementById('send-message').click(() => {
+			socket.emit('message-to-server', {
+				apelido: '',
+				message: document.getElementById('message').value
+			});
+		});
+
+		socket.on('message-to-custumer', (data) => {
 			let html = '';
 
 			html += '<div id="dialogo">';

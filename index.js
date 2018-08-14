@@ -22,4 +22,11 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log(chalk.yellow('user disconect'))
   });
+
+  socket.on('message-to-server', (data) => {
+    socket.emit('message-to-custumer', {
+      apelido: data.apelido,
+      message: data.message
+    });
+  });
 });
