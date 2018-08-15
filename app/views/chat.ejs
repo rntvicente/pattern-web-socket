@@ -78,18 +78,7 @@
 
 		<div class="row participantes" id="participantes" style="display:none">
 			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<span class="participante">
-					<img src="images/ico_usuario.png" /> Jorge
-				</span>
-
-				<span class="participante">
-					<img src="images/ico_usuario.png" /> José
-				</span>
-
-				<span class="participante">
-					<img src="images/ico_usuario.png" /> Fernando
-				</span>
+			<div class="col-md-10" id="people">
 			</div>
 			<div class="col-md-1"></div>
 
@@ -101,7 +90,8 @@
 			<div class="panel-body campo-mensagem">
 				<div class="col-md-12">
 					<div class="input-group">
-						<input type="hidden" name="apelido" id="apelido" value="<%=body.apelido%>" >
+						<input type="hidden" id="apelido" value="<%=body.apelido%>">
+						<input type="hidden" id="apelidoCheck" value="0">
 						<input type="text" class="form-control" placeholder="Mensagem" id="message">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button" id="send-message">></button>
@@ -123,8 +113,12 @@
 		document.getElementById('send-message').addEventListener('click', () => {
 			socket.emit('message-to-server', {
 				apelido: document.getElementById('apelido').value,
-				message: document.getElementById('message').value
+				message: document.getElementById('message').value,
+				apelidoCheck: document.getElementById('apelidoCheck').value
 			});
+
+			document.getElementById('message').value = '';
+			document.getElementById('apelidoCheck').value = 1;
 		});
 
 		socket.on('message-to-custumer', (data) => {
@@ -136,6 +130,19 @@
 			html += '</div>';
 
 			document.getElementById('dialogos').innerHTML += html;
+
+			window.scrollTo(0, document.body.scrollHeight);
+		});
+
+		socket.on('participants-chat', (data) => {
+			let html = '';
+
+			html += '<span class="participante">';
+			html += '<img src="images/ico_usuario.png" >'
+			html += data.apelido;
+			html += '</span>';
+
+			document.getElementById('people').innerHTML += html;
 		});
 	</script>
 </body>
